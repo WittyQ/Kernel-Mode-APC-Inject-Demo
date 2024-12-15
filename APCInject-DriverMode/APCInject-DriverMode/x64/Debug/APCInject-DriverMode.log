@@ -1,0 +1,34 @@
+﻿  Building 'APCInject-DriverMode' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Debug\APCInject-DriverMode.inf
+  Stamping [Version] section with DriverVer=12/15/2024,22.53.59.165
+  Inject.c
+C:\Users\13984\Desktop\Test\APCInject-DriverMode\APCInject-DriverMode\Inject.c(271,12): warning C4456: declaration of 'Status' hides previous local declaration
+      C:\Users\13984\Desktop\Test\APCInject-DriverMode\APCInject-DriverMode\Inject.c(229,11):
+      see declaration of 'Status'
+  
+C:\Users\13984\Desktop\Test\APCInject-DriverMode\APCInject-DriverMode\Inject.c(357,14): warning C4100: 'ProcessId': unreferenced formal parameter
+C:\Users\13984\Desktop\Test\APCInject-DriverMode\APCInject-DriverMode\Inject.c(417,48): warning C4267: '=': conversion from 'size_t' to 'USHORT', possible loss of data
+C:\Users\13984\Desktop\Test\APCInject-DriverMode\APCInject-DriverMode\Inject.c(420,35): warning C4996: 'ExAllocatePoolWithTag': ExAllocatePoolWithTag is deprecated, use ExAllocatePool2.
+C:\Users\13984\Desktop\Test\APCInject-DriverMode\APCInject-DriverMode\Inject.c(464,23): warning C4100: 'RegistryPath': unreferenced formal parameter
+C:\Users\13984\Desktop\Test\APCInject-DriverMode\APCInject-DriverMode\Inject.c(338,1): warning C4702: unreachable code
+C:\Users\13984\Desktop\Test\APCInject-DriverMode\APCInject-DriverMode\Inject.c(347,1): warning C4702: unreachable code
+C:\Users\13984\Desktop\Test\APCInject-DriverMode\APCInject-DriverMode\Inject.c(350,1): warning C4702: unreachable code
+  APCInject-DriverMode.vcxproj -> C:\Users\13984\Desktop\Test\APCInject-DriverMode\x64\Debug\APCInject-DriverMode.sys
+  Done Adding Additional Store
+  Successfully signed: C:\Users\13984\Desktop\Test\APCInject-DriverMode\x64\Debug\APCInject-DriverMode.sys
+  
+  Driver is 'Universal'.
+  ........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  C:\Users\13984\Desktop\Test\APCInject-DriverMode\x64\Debug\APCInject-DriverMode\apcinject-drivermode.cat
+  Done Adding Additional Store
+  Successfully signed: C:\Users\13984\Desktop\Test\APCInject-DriverMode\x64\Debug\APCInject-DriverMode\apcinject-drivermode.cat
+  

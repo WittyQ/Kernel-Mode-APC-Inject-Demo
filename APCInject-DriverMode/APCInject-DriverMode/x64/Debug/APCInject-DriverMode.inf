@@ -1,0 +1,62 @@
+;
+; APCInject-DriverMode.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = System ; TODO: specify appropriate Class
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318} ; TODO: specify appropriate ClassGuid
+Provider    = %ManufacturerName%
+CatalogFile = APCInject-DriverMode.cat
+DriverVer = 12/15/2024,22.53.59.165
+PnpLockdown = 1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+APCInject-DriverMode.sys = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName% = Standard,NTamd64.10.0...16299 ; %13% support introduced in build 16299
+
+[Standard.NTamd64.10.0...16299]
+%APCInject-DriverMode.DeviceDesc% = APCInject-DriverMode_Device, Root\APCInject-DriverMode ; TODO: edit hw-id
+
+[APCInject-DriverMode_Device.NT]
+CopyFiles = File_Copy
+
+[File_Copy]
+APCInject-DriverMode.sys
+
+;-------------- Service installation
+[APCInject-DriverMode_Device.NT.Services]
+AddService = APCInject-DriverMode,%SPSVCINST_ASSOCSERVICE%, APCInject-DriverMode_Service_Inst
+
+; -------------- APCInject-DriverMode driver install sections
+[APCInject-DriverMode_Service_Inst]
+DisplayName    = %APCInject-DriverMode.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\APCInject-DriverMode.sys
+
+[APCInject-DriverMode_Device.NT.Wdf]
+KmdfService = APCInject-DriverMode, APCInject-DriverMode_wdfsect
+
+[APCInject-DriverMode_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE = 0x00000002
+ManufacturerName = "<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+DiskName = "APCInject-DriverMode Installation Disk"
+APCInject-DriverMode.DeviceDesc = "APCInject-DriverMode Device"
+APCInject-DriverMode.SVCDESC = "APCInject-DriverMode Service"
