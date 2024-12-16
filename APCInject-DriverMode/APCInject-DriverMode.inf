@@ -1,0 +1,57 @@
+;
+; APCInject-DriverMode.inf
+;
+
+[Version]
+Signature   = "$WINDOWS NT$"
+Class       = System
+ClassGuid   = {4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider    = %ManufacturerName%
+DriverVer   = 12/16/2024,20.4.8.307
+CatalogFile = APCInject-DriverMode.cat
+PnpLockdown = 1
+
+[DestinationDirs]
+DefaultDestDir = 13
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+APCInject-DriverMode.sys = 1,,
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName% = Standard,NT$ARCH$.10.0...16299
+
+[Standard.NT$ARCH$.10.0...16299]
+%APCInject-DriverMode.DeviceDesc% = APCInject-DriverMode_Device, NAMESPACE\APCInject-DriverMode
+
+[APCInject-DriverMode_Device.NT]
+CopyFiles = File_Copy
+
+[File_Copy]
+APCInject-DriverMode.sys
+
+;-------------- Service installation
+[APCInject-DriverMode_Device.NT.Services]
+AddService = APCInject-DriverMode,%SPSVCINST_ASSOCSERVICE%, APCInject-DriverMode_Service_Inst
+
+; -------------- APCInject-DriverMode driver install sections
+[APCInject-DriverMode_Service_Inst]
+DisplayName    = %APCInject-DriverMode.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %13%\APCInject-DriverMode.sys
+
+[Strings]
+SPSVCINST_ASSOCSERVICE = 0x00000002
+ManufacturerName = "Your Company Name" ; Replace with your manufacturer name
+DiskName = "APCInject-DriverMode Installation Disk"
+APCInject-DriverMode.DeviceDesc = "APCInject-DriverMode Device"
+APCInject-DriverMode.SVCDESC = "APCInject-DriverMode Service"
+NAMESPACE = "YourCustomNamespace" ; Replace with your custom namespace
